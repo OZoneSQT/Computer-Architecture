@@ -1,4 +1,4 @@
-Name: ________________________   ID: _______________ 
+Name: Christopher McArthur   ID: 40004257
 
 COMP 326/5261                   Assignment 1                       Fall 2018
 
@@ -20,6 +20,15 @@ run B on the set of smaller cores.
 Calculate the speedup with i) 128 original cores, and ii) one big core and
 108 original cores.  Give the two run times as a decimal fraction of the
 sequential run times and then calculate the speedups.
+
+Answers:
+i)  Ts = 3 + 97 = 100
+    Tp-128 = 3 + ( 97 / 128 ) = 3.7578125
+    S = Ts / Tp-128 = 100 / 3.7578125 = 26.6112266112
+ii) Ts = 3 + 97 = 100
+    Tp-108 = ( 3 / 2 ) + ( 97 / 108 ) = 2.39814814815
+    S = Ts / Tp-108 = 100 / 2.39814814815 = 41.6988416988
+
 
 b) Portion A of program P takes 'x' seconds; portion B takes 'y' seconds.
 'x + y = 100'.  A is wholly sequential, while B is wholly parallel.  With
