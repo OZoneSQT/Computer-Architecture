@@ -141,15 +141,14 @@ measured in processor cycles.  This will show the remaining latency.
 
 Let 't_c' and 't_m' be the D-cache and DRAM access times, and let 'P' be the
 probability of a D-cache hit.  The cache line is 1-word long.  We have:
-
+```
   tav = P * t_c + (1 - P) * (t_m + t_c)  (in seconds)
-
       = t_c + (1 - P) * t_m              (in seconds)
-
+```
 Now, divide l.h.s. and r.h.s. by t_c (= 1 cycle), in seconds, to get:
-
+```
   t*  = 1   + (1 - P) * t_m/t_c          (dimensionless; counts cycles)
-
+```
 In line 3, we have assumed that the "hit" time 't_c' is always one cycle.
 
 Assume a D-cache with a miss rate of 1%.  Assume the DRAM latency decreases
