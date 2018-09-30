@@ -102,10 +102,10 @@ loop; it fills the GPU buffer with initial data, but cannot continue when
 the buffer becomes full.  The GPU then runs, and signals---at the end of
 its run---that the buffer is empty.  't2' does independent work lasting
 850 ns.  One possible timeline---not showing 't2'---is:
-
+```
   t1: 300 ns     g: 800 ns     t1: 300 ns     g: 800 ns    
 |------------|---------------|------------|---------------|   (times shown)
-
+```
 A context switch is not free.  If thread 'a' blocks and later unblocks, the
 'a' thread state must first be saved (250 ns) and later restored (250 ns).
 By symmetry, the reverse is true of the thread 'b' to which thread 'a'
