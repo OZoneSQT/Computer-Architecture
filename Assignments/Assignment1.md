@@ -262,6 +262,24 @@ flops/second.  If peak floating-point performance increases by a factor of
 after how many years will the memory bandwidth be _just sufficient_ to sustain
 a floating-point performance equal to the peak performance?
 
+###### Answer:
+```
+operand bandwidth : n ( words/second )              = 6 * 10^7
+D-cache miss rate : m ( ??? )                       = 0.01
+floating-point performance : n/m ( flops/second )   = 2 * 10^9
+
+ob(y) = (6 * 10^7) * 1.25 * y + (6 * 10^7)
+fp(y) = (2 * 10^9) * 1.65 * y + (2 * 10^9)
+
+
+ob(y)/m == fp(y)
+( (6 * 10^7) * 1.25 * y + (6 * 10^7) ) / 0.01 == (2 * 10^9) * 1.65 * y + (2 * 10^9)
+(6 * 10^7) * 1.25 * y + (6 * 10^7) == (2 * 10^7) * 0.0165 * 0.01y + (2 * 10^7)
+75000000y + 60000000 == 3300y + 20000000
+74996700y == -40000000
+y == -0.5334 // So never !
+
+```
 ### 6. Multicore and the Memory Wall [10 marks]
 
 Relative to each other, CPUs have few threads and enormous caches, while GPUs
