@@ -233,17 +233,16 @@ today, how many cycles will 't*' be after 6 years?  after 8?
 
 ###### Answer:
 ```
-t* : average memory access time
+t* : average memory access time in cycles   = 1 + (1 - P) * t_m/t_c
 t_c : D-cache access time         = 1
 t_m : DRAM access time            = 200 / 1.05 * y   // Are you sure you meant decreases?
 p  : D-cache hit probability      = 0.99
 t*(y) : yearly decrease           = t* / 1.45 * y    // Are you sure you meant decreases?
 
-t*(y) = ( 0.99 * 1 + ( ( 1 - 0.99 ) * ( ( 200 / 1.05 * y ) + 1) ) ) / ( 1.45 * y )
-t*(y) = ( 0.99 + ( 0.01 * ( ( 200 / 1.05 * y ) + 1 ) ) ) / ( 1.45 * y )
+t*(y) = ( 1 + (1 - P) * t_m/t_c ) / ( 1.45 * y )
 
-t*(6) = 0.1475 cycles
-t*(8) = 0.1031 cycles
+t*(6) = 0.529 cycles
+t*(8) = 0.451 cycles
 ```
 
 ### 5. The Memory-Bandwidth Wall [15 marks]
