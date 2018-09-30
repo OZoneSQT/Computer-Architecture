@@ -309,3 +309,20 @@ cache for an interval roughly equal to one phase of the evolution of its working
 set.
 
 Explain.
+
+###### Answer:
+```
+The likelyhood of a cache hit in scenerio i depends on the data-dependency of the
+threads. If all the threads are running on the same data (which fits in the cache)
+then switching threads rapidly would yeild a high hit rate; however with scenario ii
+and long thread execution, each thread switch would have a completely different
+working set resulting in a terrible cache hit rate.
+
+In contrast with a small data-dependency between threads where each thread is
+performing longand complex computations on a unique data set, only then would we see
+longer thread execution times yeilding higher cache hit rates the the secenerio i with
+rapid thread which.
+
+In most other circumstance the cache hit rate between these two scenerios would be on
+average the same.
+```
