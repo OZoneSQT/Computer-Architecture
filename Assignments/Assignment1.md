@@ -89,11 +89,37 @@ a) Show that core scaling is better, and clock scaling is worse, when sigma
 \> 1.
 
 ###### Answer:
+```
+Power = W
+Cores = n
+Frequency = f
+Voltage v
+
+Core Scaling:
+      W = n * sigma
+Clock Scaling:
+      W = ( v^2 * f ) * sigma^2.75
+      
+With core scaling in order to do quadruple the work we use 4x more power; however to get quadruple the work done with clock scaling we must use ~45x the power when power scaling is signma = 4.
+```
 
 b) Show that clock scaling is better, and core scaling is worse, when sigma
 < 1.
 
 ###### Answer:
+```
+Power = W
+Cores = n
+Frequency = f
+Voltage v
+
+Core Scaling:
+      W = n * sigma
+Clock Scaling:
+      W = ( v^2 * f ) * sigma^2.75
+      
+With core scaling in order to do quadruple the work we use 2x more power. However to get quadruple the work done with clock scaling we must use ~1.2x the power when power scaling is signma = 0.5.
+```
 
 c) If your multicore die is fully utilized and too hot, should you scale
 down voltage and frequency or reduce the number of cores?  Explain.
