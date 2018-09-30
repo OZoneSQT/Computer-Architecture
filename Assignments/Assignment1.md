@@ -22,7 +22,7 @@ Calculate the speedup with i) 128 original cores, and ii) one big core and
 108 original cores.  Give the two run times as a decimal fraction of the 
 sequential run times and then calculate the speedups.
 
-Answers:
+###### Answers:
 ```
 i)  Ts = 3 + 97 = 100
     Tp-128 = 3 + ( 97 / 128 ) = 3.7578125
@@ -38,7 +38,7 @@ an infinite number of processors, we get a speedup of, say, 's'.  It takes
 7 1/3 imaginary processors (8 real processors) to achieve a speedup of at
 least 's/2'.  What are the values of 'x' and 'y'?  (They are integers).
 
-Answer:
+###### Answer:
 ```
 Ts = x + y = 100 ==> y = 100 - x
 
@@ -88,11 +88,17 @@ the number of (running) cores.
 a) Show that core scaling is better, and clock scaling is worse, when sigma
 \> 1.
 
+###### Answer:
+
 b) Show that clock scaling is better, and core scaling is worse, when sigma
 < 1.
 
+###### Answer:
+
 c) If your multicore die is fully utilized and too hot, should you scale
 down voltage and frequency or reduce the number of cores?  Explain.
+
+###### Answer:
 
 ### 3. Tolerating Work Latency [20 marks]
 
