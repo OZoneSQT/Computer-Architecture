@@ -2,8 +2,8 @@ Name: Christopher McArthur   ID: 40004257
 
 # COMP 326/5261 - Assignment 1 - Fall 2018
 
-<h4 align='left' style="margin-bottom: 0;">Issued: September 17, 2018</h4>     <h4 align='right' style="margin: 0;">Due: October 1, 2018</h4>
-                                                     <h4 align='right' style="margin: 0;">Typed hardcopy in class</h4>
+<h4 align='left'>Issued: September 17, 2018</h4>     <h4 align='right'>Due: October 1, 2018</h4>
+                                                     <h4 align='right'>Typed hardcopy in class</h4>
 
 ### 1. Amdahl and Multicore [16 marks]
 
