@@ -231,6 +231,21 @@ by a factor of 1.05 every year, and the processor clock cycle decreases by a
 factor of 1.45 every year.  If a memory reference has a 200-cycle latency
 today, how many cycles will 't*' be after 6 years?  after 8?
 
+###### Answer:
+```
+t* : average memory access time
+t_c : D-cache access time         = 1
+t_m : DRAM access time            = 200 / 1.05 * y   // Are you sure you meant decreases?
+p  : D-cache hit probability      = 0.99
+t*(y) : yearly decrease           = t* / 1.45 * y    // Are you sure you meant decreases?
+
+t*(y) = ( 0.99 * 1 + ( ( 1 - 0.99 ) * ( ( 200 / 1.05 * y ) + 1) ) ) / ( 1.45 * y )
+t*(y) = ( 0.99 + ( 0.01 * ( ( 200 / 1.05 * y ) + 1 ) ) ) / ( 1.45 * y )
+
+t*(6) = 0.1475 cycles
+t*(8) = 0.1031 cycles
+```
+
 ### 5. The Memory-Bandwidth Wall [15 marks]
 
 When a cache is used temporally, it acts as a bandwidth amplifier.
