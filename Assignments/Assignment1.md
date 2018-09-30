@@ -2,8 +2,8 @@ Name: Christopher McArthur   ID: 40004257
 
 <h1>COMP 326/5261                   Assignment 1                       Fall 2018</h1>
 
-<h4Issued: September 17, 2018                              Due: October 1, 2018</h4>
-                                                     <h4>Typed hardcopy in class</h4>
+<h4><span align='left'>Issued: September 17, 2018</span>       <span align='right'>Due: October 1, 2018</span></h4>
+                                                     <h4><span align='right'>Typed hardcopy in class</span></h4>
 <h3>1. Amdahl and Multicore [16 marks]</h3>
 
 a) Gene Amdahl once observed, the less parallel portions of a program may
