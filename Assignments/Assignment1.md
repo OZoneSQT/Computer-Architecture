@@ -1,6 +1,6 @@
 Name: Christopher McArthur   ID: 40004257
 
-# COMP 326/5261                   Assignment 1                       Fall 2018
+# COMP 326/5261 - Assignment 1 - Fall 2018
 
 <h4 align='left'>Issued: September 17, 2018</h4>     <h4 align='right'>Due: October 1, 2018</h4>
                                                      <h4 align='right'>Typed hardcopy in class</h4>
