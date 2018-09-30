@@ -22,13 +22,14 @@ Calculate the speedup with i) 128 original cores, and ii) one big core and
 sequential run times and then calculate the speedups.
 
 Answers:
+```
 i)  Ts = 3 + 97 = 100
     Tp-128 = 3 + ( 97 / 128 ) = 3.7578125
     S = Ts / Tp-128 = 100 / 3.7578125 = 26.6112266112
 ii) Ts = 3 + 97 = 100
     Tp-108 = ( 3 / 2 ) + ( 97 / 108 ) = 2.39814814815
     S = Ts / Tp-108 = 100 / 2.39814814815 = 41.6988416988
-
+```
 
 b) Portion A of program P takes 'x' seconds; portion B takes 'y' seconds.
 'x + y = 100'.  A is wholly sequential, while B is wholly parallel.  With
@@ -37,6 +38,7 @@ an infinite number of processors, we get a speedup of, say, 's'.  It takes
 least 's/2'.  What are the values of 'x' and 'y'?  (They are integers).
 
 Answer:
+```
 Ts = x + y = 100 ==> y = 100 - x
 
 Tp-inif = x + ( y / INIFITY ) = x + ( ( 100 - x) / INIFITY )
@@ -67,6 +69,7 @@ y = 100 - x == 100 - 12 == 88
 
 x = 12
 y = 88
+```
 
 2. Power and Performance I [24 marks]
 
@@ -82,7 +85,7 @@ We can scale clock frequency up or down.  Or, we can increase or decrease
 the number of (running) cores.
 
 a) Show that core scaling is better, and clock scaling is worse, when sigma
-> 1.
+\> 1.
 
 b) Show that clock scaling is better, and core scaling is worse, when sigma
 < 1.
