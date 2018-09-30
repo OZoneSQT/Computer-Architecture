@@ -155,19 +155,53 @@ saved.  Assume "scheduling" is free.
 
 a) Suppose 't1' spin waits when the buffer becomes full.  Including 't2',
 when does the program finish?
-                                                      answer: after
+
+###### Answer:
+```
+  t1: 300 ns     g: 800 ns     t1: 300 ns     g: 800 ns       t2: 850ns  
+|------------|---------------|------------|---------------|---------------|
+
+Total Time: 3050 ns
+```
 
 b) Suppose context switches are free.  Including 't2', when does the program
 finish?
-                                                      answer: after
+
+###### Answer:
+```
+  t1: 300 ns     g: 800 ns     t1: 300 ns     g: 800 ns    
+|------------|---------------|------------|---------------|
+             |---------------|            |-----|
+                 t2: 800 ns              t2: 50 ns
+
+Total Time: 2200 ns
+```
 
 c) Suppose context switches are not free (see above).  Including 't2', when
 does the program finish?
-                                                      answer: after
+
+###### Answer:
+```
+  t1: 300 ns     g: 800 ns              t1: 300 ns     g: 800 ns    
+|------------|---------------|       |------------|---------------|
+             |-------|-------|-------|            |-------|-------|
+         cs: 250 ns  t2: 550ns  cs: 250 ns      cs: 250 ns  t2: 300ns
+
+Total Time: 2200 ns
+```
 
 d) Suppose context-switch cost doubles.  Including 't2', when does the
 program finish?
-                                                      answer: after
+
+###### Answer:
+```
+  t1: 300 ns     g: 800 ns                   t1: 300 ns     g: 800 ns    
+|------------|---------------|             |------------|---------------|
+             |----------|-------|----------|            |----------|------------|
+            cs: 500 ns  t2: 300ns  cs: 500 ns            cs: 500 ns   t2: 550ns
+
+Total Time: 2950 ns
+```
 
 ### 4. The Memory-Latency Wall [15 marks]
 
