@@ -7,7 +7,8 @@ Name: Christopher McArthur   ID: 40004257
 
 ### 1. Amdahl and Multicore [16 marks]
 
-a) Gene Amdahl once observed, the less parallel portions of a program may limit parallelism gains from the more parallel portions.
+a) Gene Amdahl once observed, the less parallel portions of a program may 
+limit parallelism gains from the more parallel portions.
 
 Portion A of program P uses 3% of the sequential run time but gets no
 speedup on a 128-core multicore die.  Portion B of program P uses 97% of the
@@ -17,8 +18,8 @@ to _cannibalize_ the resources of 20 of the original cores to build one
 larger core, leaving 108 original cores.  The plan: run A on the big core;
 run B on the set of smaller cores.
 
-Calculate the speedup with i) 128 original cores, and ii) one big core and
-108 original cores.  Give the two run times as a decimal fraction of the
+Calculate the speedup with i) 128 original cores, and ii) one big core and 
+108 original cores.  Give the two run times as a decimal fraction of the 
 sequential run times and then calculate the speedups.
 
 Answers:
@@ -71,7 +72,7 @@ x = 12
 y = 88
 ```
 
-2. Power and Performance I [24 marks]
+### 2. Power and Performance I [24 marks]
 
 There are two options to scale a multicore-die's peak performance (ops/s) by
 a _multiplicative_ factor of sigma: i) scale the number of cores by sigma,
@@ -93,7 +94,7 @@ b) Show that clock scaling is better, and core scaling is worse, when sigma
 c) If your multicore die is fully utilized and too hot, should you scale
 down voltage and frequency or reduce the number of cores?  Explain.
 
-3. Tolerating Work Latency [20 marks]
+### 3. Tolerating Work Latency [20 marks]
 
 Consider a single-program-counter monocore CPU together with a GPU.  There
 are two independent CPU threads, 't1' and 't2'.  't1' is a two-iteration
@@ -127,7 +128,7 @@ d) Suppose context-switch cost doubles.  Including 't2', when does the
 program finish?
                                                       answer: after
 
-4. The Memory-Latency Wall [15 marks]
+### 4. The Memory-Latency Wall [15 marks]
 
 Killer micros mitigate memory latency by having a multilevel cache reduce
 the latency to a couple of cycles, and then using pipeline parallelism
@@ -156,7 +157,7 @@ by a factor of 1.05 every year, and the processor clock cycle decreases by a
 factor of 1.45 every year.  If a memory reference has a 200-cycle latency
 today, how many cycles will 't*' be after 6 years?  after 8?
 
-5. The Memory-Bandwidth Wall [15 marks]
+### 5. The Memory-Bandwidth Wall [15 marks]
 
 When a cache is used temporally, it acts as a bandwidth amplifier.
 Specifically, the effective operand bandwidth reaching the pipeline is the
@@ -173,7 +174,7 @@ flops/second.  If peak floating-point performance increases by a factor of
 after how many years will the memory bandwidth be _just sufficient_ to sustain
 a floating-point performance equal to the peak performance?
 
-6. Multicore and the Memory Wall [10 marks]
+### 6. Multicore and the Memory Wall [10 marks]
 
 Relative to each other, CPUs have few threads and enormous caches, while GPUs
 have many threads and tiny caches.  Generally speaking, we need to think
