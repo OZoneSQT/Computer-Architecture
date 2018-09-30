@@ -129,6 +129,11 @@ c) If your multicore die is fully utilized and too hot, should you scale
 down voltage and frequency or reduce the number of cores?  Explain.
 
 ###### Answer:
+```
+When the system is fully utilized it's power efficency will be reduced resulting
+in a higher sigma coefficient; therefore scaling ( downwards ) the voltage and
+frequence will have a greater impact on the heat being produced by the system.
+```
 
 ### 3. Tolerating Work Latency [20 marks]
 
