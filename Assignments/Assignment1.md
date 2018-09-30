@@ -1,14 +1,13 @@
 Name: Christopher McArthur   ID: 40004257
 
-#COMP 326/5261                   Assignment 1                       Fall 2018
+# COMP 326/5261                   Assignment 1                       Fall 2018
 
 <h4 align='left'>Issued: September 17, 2018</h4>     <h4 align='right'>Due: October 1, 2018</h4>
                                                      <h4 align='right'>Typed hardcopy in class</h4>
 
-###1. Amdahl and Multicore [16 marks]
+### 1. Amdahl and Multicore [16 marks]
 
-a) Gene Amdahl once observed, the less parallel portions of a program may
-limit parallelism gains from the more parallel portions.
+a) Gene Amdahl once observed, the less parallel portions of a program may limit parallelism gains from the more parallel portions.
 
 Portion A of program P uses 3% of the sequential run time but gets no
 speedup on a 128-core multicore die.  Portion B of program P uses 97% of the
