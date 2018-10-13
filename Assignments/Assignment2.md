@@ -167,15 +167,16 @@ mul.d f4,f0,f2    |   | f | d | s | s | x1| x2| x3| x4| n | w |
                ---------------------------------------------------
 s.d   f4,0(r1)    |   |   | f | s | s | d | xi| s | s | m1| m2|   
 ```
-a) [5 marks] How does 'f0' get to "the" x-box of 'mul.d'?  Mention box and
-latch names and precise timings.  (I guess listing _every_ latch in f0's
-passage would be unambiguous, but I want timings, i.e., cycles).
+a) [5 marks] How does 'f0' get to "the" x-box of 'mul.d'?  Mention latch
+names and timings.  Syntax: "to ___ latch/register in (half-)cycle ___ ";
+repeat this phrase as necessary.
 
-b) [5 marks] How does 'f2' get to "the" x-box of 'mul.d'?  Mention box and
-latch names and precise timings.  (I guess listing _every_ latch in f2's
-passage would be unambiguous, but I want timings, i.e., cycles and half-cycles).
+b) [5 marks] How does 'f2' get to "the" x-box of 'mul.d'?  Mention latch
+names and timings.  Syntax: "to ___ latch/register in (half-)cycle ___ ";
+repeat this phrase as necessary.
 
-c) [5 marks] Are there structural hazards in this diagram?  ___ (yes/no) Explain. 
+c) [5 marks] Are there structural hazards in this diagram?  ___ (yes/no)
+Explain. 
 
 d) [5 marks] If the 's.d' became an 'l.d', how would this change the data
 dependences?
