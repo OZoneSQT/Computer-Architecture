@@ -5,7 +5,7 @@ Name: Christopher McArthur   ID: 40004257
 <h4 align='left'>Issued: October 1, 2018</h4>     <h4 align='right'>Due: October 15, 2018</h4>
                                                   <h4 align='right'>(No class, October 8)</h4>
 
-### 1. [20 marks] Special-Purpose Superscalar
+### 1. Special-Purpose Superscalar [20 marks]
 
 Assumptions: i) single-cycle pipelining, ii) 5-cycle instruction latency, and
 iii) five pipeline stages.  We build a four-lane RISC 1.0 pipeline by laying
@@ -33,7 +33,7 @@ group can be decomposed into four _dependent_ (million-instruction) threads
 cores, boxes can not be turned on and off.  How does the power efficiency of
 running one of the Qj compare to running one of the Pj?  Explain.
 
-### 2. [25 marks] In-Order (Linear) Pipelines
+### 2. In-Order (Linear) Pipelines [25 marks]
  
          +-+           +-+           +-+           +-+
 <f-box>  | |  <d-box>  | |  <x-box>  | |  <m-box>  | |  <w-box>
@@ -67,7 +67,7 @@ Second, if the mini pipeline is <a1,a2>, a1 is a hardware device that
 cannot be doing two things at once.  Draw the space-time diagram for the
 first iteration of this loop executing on the 10-stage pipeline.
 
-### 3. [15 marks] Loop Timing I
+### 3. Loop Timing I [15 marks]
 
 Consider the following code fragment:
 
@@ -102,7 +102,7 @@ units are fully pipelined.  The loop iterates 90 times.  Draw the
 space-time diagram of this code.  Calculate the total execution time of
 the loop.
 
-### 5. [20 marks] Pipeline Boxes and Pipeline Latches
+### 5. Pipeline Boxes and Pipeline Latches [20 marks]
 
 +-------------------------------------------------------------------------+ P
 |     <I-cache>               <Register file>               <D-cache>     | r
