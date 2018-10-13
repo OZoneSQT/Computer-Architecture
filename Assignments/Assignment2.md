@@ -20,20 +20,39 @@ one-lane, unpipelined 'fdxmw' datapath?  Show work.
 
 ###### Answers:
 ```
-Ts = 100%
-Tp = 100 / 4 = 25
+Ts = 100 // Sequental Time === unpipelined
+Tp = Ts / ( Pipline-width * Pipeline-lanes ) = 100 / ( 5 * 4 ) = 5
 
-S = Ts / Tp = 100 / 25 = 4
+S = Ts / Tp = 100 / 5 = 20
 ```
 
 b) [5 marks] By what factor must fetch bandwidth be increased for the
 four-lane machine?  By what factor must result bandwidth be increased
 assuming each result is written to memory?  Explain in a few words.
 
+###### Answers:
+```
+???
+```
+
 c) [5 marks] Of course, there are _intrathread_ stalls.  Executing program P4
 shows the following average number of stalls per instruction in each lane:
 <0.15, 0.20, 0.10, 0.25>.  What is this more realistic speedup on P4?  Show
 work.
+
+###### Answers:
+```
+Ts = 100 // Sequental Time === unpipelined
+Tp = Sigma[ ( Ts / Pipline-width ) * ( 1 - Stalls/instruction ) ]
+   = ( 100 /  5 ) * ( 1 - 0.15 ) +
+     ( 100 /  5 ) * ( 1 - 0.20 ) +
+     ( 100 /  5 ) * ( 1 - 0.10 ) +
+     ( 100 /  5 ) * ( 1 - 0.25 ) +
+   = ( 4 * 0.85 ) + ( 4 * 0.80 ) + ( 4 * 0.90 ) + ( 4 * 0.75 )
+   = 13.2
+     
+S = Ts / Tp = 100 / 13.2 = ~7.58
+```
 
 d) [5 marks] {Qi} is a restricted class of programs.  Every member Qj of the
 group can be decomposed into four _dependent_ (million-instruction) threads
