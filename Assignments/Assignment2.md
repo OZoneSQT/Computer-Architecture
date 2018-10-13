@@ -60,6 +60,11 @@ group can be decomposed into four _dependent_ (million-instruction) threads
 cores, boxes can not be turned on and off.  How does the power efficiency of
 running one of the Qj compare to running one of the Pj?  Explain.
 
+###### Answers:
+```
+???
+```
+
 ### 2. In-Order (Linear) Pipelines [25 marks]
 ```
          +-+           +-+           +-+           +-+
