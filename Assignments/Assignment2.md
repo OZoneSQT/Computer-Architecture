@@ -72,15 +72,14 @@ running one of the Qj compare to running one of the Pj?  Explain.
          +-+           +-+           +-+           +-+
          f/d           d/x           x/m           m/w
 ```
-##### :
-X    | instruction | registers
-:---:| :-----------|:---
-loop | lw          | r1,0(r2)
-x    | addi        | r1,r1,1
-x    | sw          | r1,0(r2)
-x    | addi        | r2,r2,4
-x    | sub         | r4,r3,r2
-x    | bnez        | r4,loop
+<table>
+<thead><tr><th align="center"></th><th align="left">instruction</th><th align="left">registers</th></tr></thead>
+<tbody>
+  <tr><td align="center">loop:</td><td align="left">lw</td><td align="left">r1,0(r2)</td></tr><tr><td align="center"></td><td align="left">addi</td><td align="left">r1,r1,1</td></tr>
+  <tr><td align="center"></td><td align="left">sw</td><td align="left">r1,0(r2)</td></tr><tr><td align="center"></td><td align="left">addi</td><td align="left">r2,r2,4</td></tr>
+  <tr><td align="center"></td><td align="left">sub</td><td align="left">r4,r3,r2</td></tr><tr><td align="center"></td><td align="left">bnez</td><td align="left">r4,loop</td></tr>
+</tbody>
+</table>
 
 a) [5 marks] Is their one data dependence in this code that is mediated
 through a memory location rather than through a register?  ___ (yes/no)
