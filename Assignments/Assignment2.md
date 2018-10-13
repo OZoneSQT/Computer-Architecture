@@ -61,18 +61,21 @@ cores, boxes can not be turned on and off.  How does the power efficiency of
 running one of the Qj compare to running one of the Pj?  Explain.
 
 ### 2. In-Order (Linear) Pipelines [25 marks]
- 
+```
          +-+           +-+           +-+           +-+
 <f-box>  | |  <d-box>  | |  <x-box>  | |  <m-box>  | |  <w-box>
          +-+           +-+           +-+           +-+
          f/d           d/x           x/m           m/w
-
-loop: lw    r1,0(r2)
-      addi  r1,r1,1
-      sw    r1,0(r2)
-      addi  r2,r2,4
-      sub   r4,r3,r2
-      bnez  r4,loop
+```
+##### loop:
+instruction | registers
+:-----------|:---
+lw          | r1,0(r2)
+addi        | r1,r1,1
+sw          | r1,0(r2)
+addi        | r2,r2,4
+sub         | r4,r3,r2
+bnez        | r4,loop
 
 a) [5 marks] Is their one data dependence in this code that is mediated
 through a memory location rather than through a register?  ___ (yes/no)
@@ -98,14 +101,17 @@ first iteration of this loop executing on the 10-stage pipeline.
 
 Consider the following code fragment:
 
-loop: lw   r1,0(r3)
-      lw   r2,0(r4)
-      add  r1,r1,r2
-      sw   0(r3),r1
-      addi r3,r3,4
-      addi r4,r4,4
-      sub  r6,r5,r3
-      bnez r6,loop
+##### loop:
+instruction | registers
+:-----------|:---
+lw          | r1,0(r3)
+lw          | r2,0(r4)
+add         | r1,r1,r2
+sw          | 0(r3),r1
+addi        | r3,r3,4
+addi        | r4,r4,4
+sub         | r6,r5,r3
+bnez        | r6,loop
 
 The loop iterates 90 times.  Draw a space-time diagram of this code.
 Calculate the total execution time of the loop.
@@ -114,15 +120,18 @@ Calculate the total execution time of the loop.
 
 Consider the following code fragment:
 
-loop: l.d   f0,0(r2)
-      l.d   f2,0(r3)
-      s.d   f0,0(r2)
-      sub.d f4,f4,f0
-      add.d f4,f4,f4
-      addi  r2,r2,#8
-      addi  r3,r3,#8
-      sub   r4,r5,r3
-      bnez  r4,loop
+##### loop:
+instruction | registers
+:-----------|:---
+l.d         | f0,0(r2)
+l.d         | f2,0(r3)
+s.d         | f0,0(r2)
+sub.d       | f4,f4,f0
+add.d       | f4,f4,f4
+addi        | r2,r2,#8
+addi        | r3,r3,#8
+sub         | r4,r5,r3
+bnez        | r4,loop
 
 'sub.d' and 'add.d' have 3 x-boxes.  'mul.d' has 4 x-boxes.  Functional
 units are fully pipelined.  The loop iterates 90 times.  Draw the
@@ -130,7 +139,7 @@ space-time diagram of this code.  Calculate the total execution time of
 the loop.
 
 ### 5. Pipeline Boxes and Pipeline Latches [20 marks]
-
+```
 +-------------------------------------------------------------------------+ P
 |     <I-cache>               <Register file>               <D-cache>     | r
 |                                                                         | o
@@ -140,10 +149,10 @@ the loop.
 |              +-+           +-+           +-+           +-+              | s
 |              f/d           d/x           x/m           m/w              | o
 +-------------------------------------------------------------------------+ r
-
+```
 Memrefs have 2 m-boxes, and floating-point multiplies have 4 x-boxes.  Integer
 add is denoted xi.  Consider the following space-time diagram:     
-
+```
                 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 
 l.d   f0,0(r1)  f | d | xi| m1| m2| w |   |   |   |   |   |   |   
                ---------------------------------------------------
@@ -152,7 +161,7 @@ l.d   f2,0(r2)    | f | d | xi| m1| m2| w |   |   |   |   |   |
 mul.d f4,f0,f2    |   | f | d | s | s | x1| x2| x3| x4| n | w |   
                ---------------------------------------------------
 s.d   f4,0(r1)    |   |   | f | s | s | d | xi| s | s | m1| m2|   
-
+```
 a) [5 marks] How does 'f0' get to "the" x-box of 'mul.d'?  Mention box and
 latch names and precise timings.  (I guess listing _every_ latch in f0's
 passage would be unambiguous, but I want timings, i.e., cycles).
