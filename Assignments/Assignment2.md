@@ -18,6 +18,14 @@ group can be decomposed into four independent (million-instruction) threads
 no stalls, what is the speedup of the four-lane 'fdxmw' pipeline over the
 one-lane, unpipelined 'fdxmw' datapath?  Show work.
 
+###### Answers:
+```
+Ts = 100%
+Tp = 100 / 4 = 25
+
+S = Ts / Tp = 100 / 25 = 4
+```
+
 b) [5 marks] By what factor must fetch bandwidth be increased for the
 four-lane machine?  By what factor must result bandwidth be increased
 assuming each result is written to memory?  Explain in a few words.
