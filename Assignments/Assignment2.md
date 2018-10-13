@@ -62,7 +62,9 @@ running one of the Qj compare to running one of the Pj?  Explain.
 
 ###### Answers:
 ```
-???
+The power efficiency of Qj will be much worse than that of Pj because multiple 
+boxes will be experiencing stalls while waiting on other boxes meaning nothing
+else can run in that cycle crippling the efficiency.
 ```
 
 ### 2. In-Order (Linear) Pipelines [25 marks]
