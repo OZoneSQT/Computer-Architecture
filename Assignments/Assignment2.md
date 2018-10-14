@@ -75,26 +75,47 @@ else can run in that cycle crippling the efficiency.
          f/d           d/x           x/m           m/w
 ```
 <table>
-  <tr><td align="center">loop:</td><td align="left">lw</td><td align="left">r1,0(r2)</td></tr>
-  <tr><td align="center"></td><td align="left">addi</td><td align="left">r1,r1,1</td></tr>
-  <tr><td align="center"></td><td align="left">sw</td><td align="left">r1,0(r2)</td></tr>
-  <tr><td align="center"></td><td align="left">addi</td><td align="left">r2,r2,4</td></tr>
-  <tr><td align="center"></td><td align="left">sub</td><td align="left">r4,r3,r2</td></tr>
-  <tr><td align="center"></td><td align="left">bnez</td><td align="left">r4,loop</td></tr>
+  <tr><td align="center">loop:</td><td align="left">lw   </td><td align="left">r1,0(r2)</td></tr>
+  <tr><td align="center"></td><td align="left">     addi </td><td align="left">r1,r1,1</td></tr>
+  <tr><td align="center"></td><td align="left">     sw   </td><td align="left">r1,0(r2)</td></tr>
+  <tr><td align="center"></td><td align="left">     addi </td><td align="left">r2,r2,4</td></tr>
+  <tr><td align="center"></td><td align="left">     sub  </td><td align="left">r4,r3,r2</td></tr>
+  <tr><td align="center"></td><td align="left">     bnez  </td><td align="left">r4,loop</td></tr>
 </table>
 
 a) [5 marks] Is their one data dependence in this code that is mediated
 through a memory location rather than through a register?  ___ (yes/no)
 Explain, specifying type if the answer is "yes".
 
+###### Answers:
+```
+???
+```
+
 b) [5 marks] Draw the space-time diagram for the first iteration of this
 loop.
+
+###### Answer
+instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+:-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+lw    | r1,0(r2) | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |
+addi  | r1,r1,1  |   | f | d | s | x | m | w |   |   |   |   |   |   |   |   |   |
+sw    | r1,0(r2) |   |   | f | s | d | x | m | w |   |   |   |   |   |   |   |   |
+addi  | r2,r2,4  |   |   |   | s | f | d | s | s | x | m | w |   |   |   |   |   |
+sub   | r4,r3,r2 |   |   |   |   |   | f | s | s | d | s | s | x | m | w |   |   |
+bnez  | >r4,loop |   |   |   |   |   |   | s | s | f | s | s | s | d | x | m | w |
+lw    | r1,0(r2) |   |   |   |   |   |   | s | s | f | s | s | s | f | d | x | m | w
 
 c) [5 marks] In the 5-stage pipeline, the longest stage requires 0.8 ns
 for its compute portion, and 0.1 ns for its write-back portion.  What is
 the clock-cycle time of the 5-stage pipeline?  If a 10-stage pipeline is
 produced by splitting all stages in half, what is the cycle time of the
 10-stage pipeline?  Note: you cannot split latches.
+
+###### Answers:
+```
+???
+```
 
 d) [10 marks] The 10-stage pipeline has some subtleties.  First, each pair
 of new boxes is a mini pipeline.  A mini pipeline must finish computing
