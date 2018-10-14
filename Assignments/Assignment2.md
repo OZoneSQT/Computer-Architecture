@@ -89,7 +89,11 @@ Explain, specifying type if the answer is "yes".
 
 ###### Answers:
 ```
-???
+There are many data dependencies between the instruction, flow data and anti-
+dependencies are all present in this example. However there apeares to only be
+registers being used in this example so I can not venture to say if they are
+being mediated by a memory location, certainly from a memory access is there
+mediation but I am no confident with your choice of words for this question.
 ```
 
 b) [5 marks] Draw the space-time diagram for the first iteration of this
