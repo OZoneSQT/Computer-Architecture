@@ -193,19 +193,23 @@ units are fully pipelined.  The loop iterates 90 times.  Draw the
 space-time diagram of this code.  Calculate the total execution time of
 the loop.
 
-
 ###### Answer
-instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
-:-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
-l.d   | f0,0(r2) |
-l.d   | f2,0(r3) |
-s.d   | f0,0(r2) |
-sub.d | f4,f4,f0 |
-add.d | f4,f4,f4 |
-addi  | r2,r2,#8 |
-addi  | r3,r3,#8 |
-sub   | r4,r5,r3 |
-bnez  | r4,loop  |
+instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+:-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+l.d   | f0,0(r2) | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |   |
+l.d   | f2,0(r3) |   | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |
+s.d   | f0,0(r2) |       | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |
+sub.d | f4,f4,f0 |   |   |   | f | d | x | x | x | m | w |   |   |   |   |   |   |   |
+add.d | f4,f4,f4 |   |   |   |   | f | d | s | s | x | x | x | m | w |   |   |   |   |
+addi  | r2,r2,#8 |   |   |   |   |   | f | s | s | d | x | m | w |   |   |   |   |   |
+addi  | r3,r3,#8 |   |   |   |   |   |   | s | s | f | d | x | m | w |   |   |   |   |
+subi  | r4,r5,r3 |   |   |   |   |   |   |   |   |   | f | d | x | m | w |   |   |   |
+bnez  | r4,loop  |   |   |   |   |   |   |   |   |   |   | f | s | d | x | m | w |   |
+l.d   | f0,0(r2) |   |   |   |   |   |   |   |   |   |   |   |   | f | f | d | x | m | w
+
+```
+TO DO: Show many ! ( 13 * 89 ) + 18
+```
 
 ### 5. Pipeline Boxes and Pipeline Latches [20 marks]
 ```
@@ -233,12 +237,38 @@ a) [5 marks] How does 'f0' get to "the" x-box of 'mul.d'?  Mention latch
 names and timings.  Syntax: "to ___ latch/register in (half-)cycle ___ ";
 repeat this phrase as necessary.
 
+###### Answer
+```
+0 - in register r1
+1 - to m/w latch in (half-)cycle 5
+2 - to f0 register in (half-)cycle 6
+3 - to d/x latch in (half-)cycle 6
+```
+
 b) [5 marks] How does 'f2' get to "the" x-box of 'mul.d'?  Mention latch
 names and timings.  Syntax: "to ___ latch/register in (half-)cycle ___ ";
 repeat this phrase as necessary.
 
+###### Answer
+```
+0 - in register r2
+1 - to m/w latch in (half-)cycle 6
+2 - to d/x latch in (half-)cycle 6
+```
+
 c) [5 marks] Are there structural hazards in this diagram?  ___ (yes/no)
 Explain. 
 
+###### Answer
+```
+Yes as the mul.d requires the result of the two l.d instructions in addition
+to the s.d requiring the computation of the mul.d
+```
+
 d) [5 marks] If the 's.d' became an 'l.d', how would this change the data
 dependences?
+
+###### Answer
+```
+This would change the data dependency into an anti-dependency
+```
