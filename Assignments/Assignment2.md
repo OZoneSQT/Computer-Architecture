@@ -104,7 +104,7 @@ instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6
 :-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 lw    | r1,0(r2) | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |
 addi  | r1,r1,1  |   | f | d | s | x | m | w |   |   |   |   |   |   |   |   |   |
-sw    | r1,0(r2) |   |   | f | s | d | x | m | w |   |   |   |   |   |   |   |   |
+sw    | r1,0(r2) |   |   | f | s | d | x | n | w |   |   |   |   |   |   |   |   |
 addi  | r2,r2,4  |   |   |   | s | f | d | s | s | x | m | w |   |   |   |   |   |
 sub   | r4,r3,r2 |   |   |   |   |   | f | s | s | d | s | s | x | m | w |   |   |
 bnez  | >r4,loop |   |   |   |   |   |   | s | s | f | s | s | s | d | x | m | w |
@@ -133,7 +133,7 @@ instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6
 :-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 lw    | r1,0(r2) |f1 |f2 |d1 |d2 |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 addi  | r1,r1,1  |   |f1 |f2 |d1 |d2 | s | s | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |   |   |
-sw    | r1,0(r2) |   |   |f1 |f2 |d1 | s | s | s |d2 | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |
+sw    | r1,0(r2) |   |   |f1 |f2 |d1 | s | s | s |d2 | s |x1 |x2 |n1 |n2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |
 addi  | r2,r2,4  |   |   |   |f1 |f2 | s | s | s |d1 | s |d2 | s | s | s | s | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |
 sub   | r4,r3,r2 |   |   |   |   |f1 | s | s | s |f2 | s |d1 | s | s | s | s | s |d2 | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |
 bnez  | >r4,loop |   |   |   |   |   | s | s | s |f1 | s |f2 | s | s | s | s | s |d1 | s |d2 | s |x1 |x2 |m1 |m2 |w1 |w2 |
@@ -144,37 +144,68 @@ lw    | r1,0(r2) |   |   |   |   |   |   | s | s |   | s |f1 | s | s | s | s | s
 Consider the following code fragment:
 <table>
 <tr><td align="center">loop:</td><td align="left"> lw   </td><td align="left"> r1,0(r3) </td></tr>
-<tr><td align="center"></td><td align="left"> lw   </td><td align="left"> r2,0(r4) </td></tr>
-<tr><td align="center"></td><td align="left"> add  </td><td align="left"> r1,r1,r2 </td></tr>
-<tr><td align="center"></td><td align="left"> sw   </td><td align="left"> 0(r3),r1 </td></tr>
-<tr><td align="center"></td><td align="left"> addi </td><td align="left"> r3,r3,4  </td></tr>
-<tr><td align="center"></td><td align="left"> addi </td><td align="left"> r4,r4,4  </td></tr>
-<tr><td align="center"></td><td align="left"> sub  </td><td align="left"> r6,r5,r3 </td></tr>
-<tr><td align="center"></td><td align="left"> bnez </td><td align="left"> r6,loop  </td></tr>
+<tr><td align="center"></td><td align="left">      lw   </td><td align="left"> r2,0(r4) </td></tr>
+<tr><td align="center"></td><td align="left">      add  </td><td align="left"> r1,r1,r2 </td></tr>
+<tr><td align="center"></td><td align="left">      sw   </td><td align="left"> 0(r3),r1 </td></tr>
+<tr><td align="center"></td><td align="left">      addi </td><td align="left"> r3,r3,4  </td></tr>
+<tr><td align="center"></td><td align="left">      addi </td><td align="left"> r4,r4,4  </td></tr>
+<tr><td align="center"></td><td align="left">      sub  </td><td align="left"> r6,r5,r3 </td></tr>
+<tr><td align="center"></td><td align="left">      bnez </td><td align="left"> r6,loop  </td></tr>
 </table>
 
 The loop iterates 90 times.  Draw a space-time diagram of this code.
 Calculate the total execution time of the loop.
+
+###### Answer
+instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+:-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+lw    | r1,0(r3) | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |   |
+lw    | r2,0(r4) |   | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |
+add   | r1,r1,r2 |   |   | f | d | s | x | m | w |   |   |   |   |   |   |   |   |   |
+sw    | 0(r3),r1 |   |   |   | f | s | d | x | n | w |   |   |   |   |   |   |   |   |
+addi  | r3,r3,4  |   |   |   |   | s | f | d | s | s | x | m | w |   |   |   |   |   |
+addi  | r4,r4,4  |   |   |   |   |   |   | f | s | s | d | x | m | w |   |   |   |   |
+sub   | r6,r5,r3 |   |   |   |   |   |   |   | s | s | f | d | x | m | w |   |   |   |
+bnez  | r6,loop  |   |   |   |   |   |   |   |   |   |   | f | s | d | x | m | w |   |
+lw    | r1,0(r3) |   |   |   |   |   |   |   |   |   |   |   | s | f | f | d | x | m | w 
+
+```
+TO DO: Show many ! ( 13 * 89 ) + 18
+```
 
 ### 4. [20 marks] Floating-Point Instructions (Loop Timing II)
 
 Consider the following code fragment:
 <table>
 <tr><td align="center">loop:</td><td align="left"> l.d   </td><td align="left"> f0,0(r2) </td></tr>
-<tr><td align="center"></td><td align="left"> l.d   </td><td align="left"> f2,0(r3) </td></tr>
-<tr><td align="center"></td><td align="left"> s.d   </td><td align="left"> f0,0(r2) </td></tr>
-<tr><td align="center"></td><td align="left"> sub.d </td><td align="left"> f4,f4,f0 </td></tr>
-<tr><td align="center"></td><td align="left"> add.d </td><td align="left"> f4,f4,f4 </td></tr>
-<tr><td align="center"></td><td align="left"> addi  </td><td align="left"> r2,r2,#8 </td></tr>
-<tr><td align="center"></td><td align="left"> addi  </td><td align="left"> r3,r3,#8 </td></tr>
-<tr><td align="center"></td><td align="left"> sub   </td><td align="left"> r4,r5,r3 </td></tr>
-<tr><td align="center"></td><td align="left"> bnez  </td><td align="left"> r4,loop  </td></tr>
+<tr><td align="center"></td><td align="left">      l.d   </td><td align="left"> f2,0(r3) </td></tr>
+<tr><td align="center"></td><td align="left">      s.d   </td><td align="left"> f0,0(r2) </td></tr>
+<tr><td align="center"></td><td align="left">      sub.d </td><td align="left"> f4,f4,f0 </td></tr>
+<tr><td align="center"></td><td align="left">      add.d </td><td align="left"> f4,f4,f4 </td></tr>
+<tr><td align="center"></td><td align="left">      addi  </td><td align="left"> r2,r2,#8 </td></tr>
+<tr><td align="center"></td><td align="left">      addi  </td><td align="left"> r3,r3,#8 </td></tr>
+<tr><td align="center"></td><td align="left">      sub   </td><td align="left"> r4,r5,r3 </td></tr>
+<tr><td align="center"></td><td align="left">      bnez  </td><td align="left"> r4,loop  </td></tr>
 </table>
 
 'sub.d' and 'add.d' have 3 x-boxes.  'mul.d' has 4 x-boxes.  Functional
 units are fully pipelined.  The loop iterates 90 times.  Draw the
 space-time diagram of this code.  Calculate the total execution time of
 the loop.
+
+
+###### Answer
+instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+:-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+l.d   | f0,0(r2) |
+l.d   | f2,0(r3) |
+s.d   | f0,0(r2) |
+sub.d | f4,f4,f0 |
+add.d | f4,f4,f4 |
+addi  | r2,r2,#8 |
+addi  | r3,r3,#8 |
+sub   | r4,r5,r3 |
+bnez  | r4,loop  |
 
 ### 5. Pipeline Boxes and Pipeline Latches [20 marks]
 ```
