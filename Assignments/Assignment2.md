@@ -128,6 +128,17 @@ Second, if the mini pipeline is <a1,a2>, a1 is a hardware device that
 cannot be doing two things at once.  Draw the space-time diagram for the
 first iteration of this loop executing on the 10-stage pipeline.
 
+###### Answer
+instr | register | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+:-----|:--------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+lw    | r1,0(r2) |f1 |f2 |d1 |d2 |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+addi  | r1,r1,1  |   |f1 |f2 |d1 |d2 | s | s | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |   |   |
+sw    | r1,0(r2) |   |   |f1 |f2 |d1 | s | s | s |d2 | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |   |   |   |   |   |   |
+addi  | r2,r2,4  |   |   |   |f1 |f2 | s | s | s |d1 | s |d2 | s | s | s | s | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |   |   |
+sub   | r4,r3,r2 |   |   |   |   |f1 | s | s | s |f2 | s |d1 | s | s | s | s | s |d2 | s |x1 |x2 |m1 |m2 |w1 |w2 |   |   |
+bnez  | >r4,loop |   |   |   |   |   | s | s | s |f1 | s |f2 | s | s | s | s | s |d1 | s |d2 | s |x1 |x2 |m1 |m2 |w1 |w2 |
+lw    | r1,0(r2) |   |   |   |   |   |   | s | s |   | s |f1 | s | s | s | s | s |f2 | s |f1 | s |f2 |d1 |d2 |x1 |x2 |m1 |m2 
+
 ### 3. Loop Timing I [15 marks]
 
 Consider the following code fragment:
