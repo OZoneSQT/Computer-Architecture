@@ -170,7 +170,7 @@ bnez  | r6,loop  |   |   |   |   |   |   |   |   |   |   | f | s | d | x | m | w
 lw    | r1,0(r3) |   |   |   |   |   |   |   |   |   |   |   | s | f | f | d | x | m | w 
 
 ```
-TO DO: Show many ! ( 13 * 89 ) + 18
+Te = Loop-Duration * ( N - 1 ) + Program-Cycle-Time = ( 12 * 89 ) + 18 = 1086
 ```
 
 ### 4. [20 marks] Floating-Point Instructions (Loop Timing II)
@@ -208,7 +208,7 @@ bnez  | r4,loop  |   |   |   |   |   |   |   |   |   |   | f | s | d | x | m | w
 l.d   | f0,0(r2) |   |   |   |   |   |   |   |   |   |   |   |   | f | f | d | x | m | w
 
 ```
-TO DO: Show many ! ( 13 * 89 ) + 18
+Te = Loop-Duration * ( N - 1 ) + Program-Cycle-Time =  12 * ( 90 - 1  ) + 18 = 1086
 ```
 
 ### 5. Pipeline Boxes and Pipeline Latches [20 marks]
