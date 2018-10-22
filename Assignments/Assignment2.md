@@ -1,8 +1,9 @@
 Name: Christopher McArthur   ID: 40004257
 
-# COMP 326/5261 - Assignment 2 - Fall 2018
+# COMP 326/5261 - Assignment 2 Revised - Fall 2018
 
 Issued: October 1, 2018, Due: October 15, 2018 (No class, October 8)
+
 Corrected: October 19, 2018, Due: October 22, 2018 
  
 ### 1. Special-Purpose Superscalar [20 marks]
