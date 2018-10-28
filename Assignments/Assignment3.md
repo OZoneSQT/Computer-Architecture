@@ -17,7 +17,20 @@ loop: l.d   f4,0(r1)   l1
       subi  r2,r2,8    sub2
       bnez  r1,loop    br
 ```
-Note: Our convention is that FP arithmetics have 4 x-boxes.  
+Note: Our convention is that FP arithmetics have 4 x-boxes.
+
+Instruction | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |`8`| 9 | 0 | 1 | 2 | 3 
+-----------:|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+l1          | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   
+l2          |   | f | d | x | m | w |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   
+m1          |   |   | f | d | x | x | x | x | m | w |   |   |   |   |   |   |   |   |   |   |   |   |   
+m2          |   |   |   | f | d | s | s | s | x | x | x | x | m | w |   |   |   |   |   |   |   |   |   
+a1          |   |   |   |   |   |   |   | s | f | d | s | s | x | m | w |   |   |   |   |   |   |   |   
+s1          |   |   |   |   |   |   |   |   |   | f | s | s | d | x | m | w |   |   |   |   |   |   |   
+sub1        |   |   |   |   |   |   |   |   |   |   |   |   | f | d | s | s | x | m | w |   |   |   |   
+sub2        |   |   |   |   |   |   |   |   |   |   |   |   |   | f | s | s | d | x | m | w |   |   |   
+br          |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | f |_d_| x | m | w |   |   
+l1          |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | f | f | d | x | m | w 
 
 a) [6 marks] Using the names 'l1' to 's1' for the first six instructions
 in the body of this loop, draw the flow-dependence graph for just these
@@ -29,7 +42,7 @@ producer and the consumer.
 ┌─────────────────────────────────────┐
 │    ┌───                     ───┐    |
 │    | l1 --> m1 -->             |    |
-└--> |                a1 --> s1  | O ─┘
+└──> |                a1 --> s1  | O ─┘
      | l2 --> m2 -->             |
      └───                     ───┘  
 ```
