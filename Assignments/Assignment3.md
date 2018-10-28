@@ -4,7 +4,7 @@ Name: Christopher McArthur   ID: 40004257
 
 Issued: October 8, 2018; Due: October 22, 2018 - Typed hardcopy in class
 
-1. Loop Unrolling [44 marks]
+### 1. Loop Unrolling [44 marks]
 Consider the following loop:
 ```
 loop: l.d   f4,0(r1)   l1  
@@ -24,15 +24,20 @@ in the body of this loop, draw the flow-dependence graph for just these
 instructions.  Label each arrow with the dependence gap between the
 producer and the consumer.
 
+###### Answers:
+```
+┌─────────────────────────────────────┐
+│    ┌───                     ───┐    |
+│    | l1 --> m1 -->             |    |
+└--> |                a1 --> s1  | O ─┘
+     | l2 --> m2 -->             |
+     └───                     ───┘  
+```
+
 In what follows, focus on three flow-dependence types: i) FP arith to
 FP arith, ii) FP arith to FP store, and iii) FP load to FP arith.  Denote
 the number of m-boxes in memory references by '#m', and the number of
 x-boxes in FP arithmetics by '#x'.
-
-###### Answers:
-```
-
-```
 
 b) [6 marks] For each of the three designated flow-dependence types,
 indicate the number of stalls in adjacent producer-consumer pairs as
