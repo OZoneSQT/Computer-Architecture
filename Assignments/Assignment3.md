@@ -40,11 +40,11 @@ producer and the consumer.
 ###### Answers:
 ```
 ┌─────────────────────────────────────┐
-│    ┌───                     ───┐    |
-│    | l1 --> m1 -->             |    |
-└──> |                a1 --> s1  | O ─┘
-     | l2 --> m2 -->             |
-     └───                     ───┘  
+│    ┌───                      ───┐    |
+│    | l1 ---> m1 --->            |    |
+└──> |     1       4   a1 ---> s1 | O ─┘
+     | l2 ---> m2 --->     1      |
+     └───                      ───┘  
 ```
 
 In what follows, focus on three flow-dependence types: i) FP arith to
@@ -58,7 +58,9 @@ functions of '#m' and '#x'.
 
 ###### Answers:
 ```
-
+i)   FP arith to FP arith: 3 * #x
+ii)  FP arith to FP store: 2 * #x
+iii) FP load  to FP arith: 1 * #m
 ```
 
 c) [10 marks] Suppose #m = 1 and #x = 4.  How many stalls occur in one
@@ -66,7 +68,10 @@ iteration of the loop if it is executed exactly as written?
 
 ###### Answers:
 ```
+Number of Stalls: 8 
 
+FP arith --> FP arith // x2
+FP arith --> FP store // X1
 ```
 
 d) [10 marks] Unroll the loop twice.  If one reschedules the unrolled
