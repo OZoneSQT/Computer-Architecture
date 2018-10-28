@@ -81,8 +81,11 @@ padding.  Show the rescheduled code using the _short_ names.)
 
 ###### Answers:
 ```
-
-```
+l11 --- > m11   -->
+l21 --- > m21   -->  sub12 -->   a11  -->   s11  -->    sub11 -->
+l12 --- > m12   -->
+l22 --- > m22   -->  sub22 -->   a21  -->   s21  -->    sub21 -->
+ ```
 
 e) [8 marks] Five instructions in the original code contain immediates.
 After unrolling the loop twice, some immediates may change.  Show all
