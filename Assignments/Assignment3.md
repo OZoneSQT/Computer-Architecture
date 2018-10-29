@@ -81,10 +81,21 @@ padding.  Show the rescheduled code using the _short_ names.)
 
 ###### Answers:
 ```
+Augmented Short Names:  ${instrcution}${iteration number}${instruction id}
+l.d   f4,0(r1)   l11      l21
+l.d   f6,0(r2)   l12      l22
+mul.d f4,f4,f0   m11      m21
+mul.d f6,f6,f2   m12      m22
+add.d f4,f4,f6   a11      a21
+s.d   f4,0(r1)   s11      s21
+subi  r1,r1,8    sub11    sub21
+subi  r2,r2,8    sub12    sub22
+bnez  r1,loop    br11     br21      
+
 l11 --- > m11   -->
-l21 --- > m21   -->  sub12 -->   a11  -->   s11  -->    sub11 -->
+l21 --- > m21   -->  sub12 -->   a11  -->   s11  -->    sub11 -->  br11
 l12 --- > m12   -->
-l22 --- > m22   -->  sub22 -->   a21  -->   s21  -->    sub21 -->
+l22 --- > m22   -->  sub22 -->   a21  -->   s21  -->    sub21 -->  br21
  ```
 
 e) [8 marks] Five instructions in the original code contain immediates.
@@ -93,6 +104,9 @@ instructions with correct immediates in the unrolled code.
 
 ###### Answers:
 ```
+immediates was never refered too in class but I am assuming this is about registar names.
+
+
 
 ```
 
