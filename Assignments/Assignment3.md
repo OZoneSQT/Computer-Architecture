@@ -241,7 +241,9 @@ this violate the flow dependence?
 
 ###### Answers:
 ```
-
+If alpha is a load to f4 operand and beta is a multiply of anything and f4
+This would be an output dependencies and the flipping of order would affect
+the correctness of the program.
 ```
 
 b) [8 marks] Three instructions---a producer, a consumer, and one that
@@ -251,7 +253,10 @@ operand?
 
 ###### Answers:
 ```
-
+The first instruction is given a unique name, and the second instruction sets
+his ear to listen to the first name producing a result. Since the name is unique
+( ie no impersonation ) no one else can write to that location and foul the second
+instruction.
 ```
 
 c) [6 marks] Three instructions are pairwise output-dependent.  All three
@@ -260,5 +265,7 @@ destination register receive? ___ Explain.
 
 ###### Answers:
 ```
+There are 2 updates to the common destination register
 
+Instrctuion -- "UPDATE ONE" --> Instrctuion -- "UPDATE TWO" --> Instrctuion
 ```
