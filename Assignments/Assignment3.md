@@ -116,13 +116,27 @@ sub11       |   |   |   |   |   |   |   |   |   |   |   | f | d | s | s | x | m 
 br          |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | f |_d_| x | m | w |   |
 l11         |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   | f | f | d | x | m | w 
 
+> I got this down to two stalls though I suspect If i knew all the tricks this could probably a zero stalls unroll
+
 e) [8 marks] Five instructions in the original code contain immediates.
 After unrolling the loop twice, some immediates may change.  Show all
 instructions with correct immediates in the unrolled code.
 
 ###### Answers:
 ```
-immediates was never refered too in class but I am assuming this is about registar names.
+immediates was never refered too in class but I am assuming this is about
+registar names based on the follow of the question.
+
+ Iteration 1    |  Iteration 2
+l.d   f4,0(r1)  | l.d   f8,0(r3) 
+l.d   f6,0(r2)  | l.d   f10,0(r4) 
+mul.d f4,f4,f0  | mul.d f8,f8,f12 
+mul.d f6,f6,f2  | mul.d f10,f10,f14 
+add.d f4,f4,f6  | add.d f8,f8,f10 
+s.d   f4,0(r1)  | s.d   f8,0(r3) 
+subi  r1,r1,8   | subi  r3,r3,8  
+subi  r2,r2,8   | subi  r4,r4,8  
+bnez  r1,loop   | bnez  r3,loop  
 ```
 
 f) [4 marks] According to the strict definitions of data dependences,
@@ -132,7 +146,10 @@ Explain.
 
 ###### Answers:
 ```
-
+I think conceptually it is required in order to understand the by pass
+of the dependency but in parctice I'm sure someone can find a scenario
+where by it is not required and does not break the correctness of a 
+program.
 ```
 
 ### 2. Dynamic Instruction Scheduling I [34 marks]
