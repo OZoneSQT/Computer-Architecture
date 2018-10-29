@@ -200,9 +200,18 @@ issuable instructions as 'issuable'.
 
 ###### Answers:
 ```
-
+rs1:   free
+rs2:   free
+rs3:   free
+rs4:   free
+rs6:   free
+rs7:   free
+rs8:   free
+rs9:   mul Val: f4; Val: f0; Out: f4  _ Issuable_
+rs10:  mul Val: f6; Val: f2; Out: f6  _ Issuable_
+rs11:  add Ear: f4; Ear: f6; Out: f4
+rs12:  s   Val: f4; Mem[r1]
 ```
-
 c) [10 marks] At this point, the d-box begins to dispatch the third
 iteration.  When he has dispatched as much as possible, show the contents
 of the reservation stations [7] through [12].  No other action takes place
@@ -210,13 +219,23 @@ unless I so indicate.
 
 ###### Answers:
 ```
-
+rs1:   sub
+rs2:   sub
+rs3:   br
+rs4:   mul
+rs6:   mul
+rs7:   add Ear f4; Ear: f6; Out: f4
+rs8:   s   Val: f4; Mem[r1]
+rs9:   mul Val: f4; Val: f0; Out: f4
+rs10:  mul Val: f6; Val: f2; Out: f6
+rs11:  add Ear: f4; Ear: f6; Out: f4
+rs12:  s   Val: f4; Mem[r1]
 ```
 
 ### 3. Dynamic Instruction Scheduling II [22 marks]
 
 a) [8 marks] There is a flow dependence from instruction 'alpha' to
-instruction 'beta'.  The station containing 'alpha' is hotheaded and
+instruction 'beta'. The station containing 'alpha' is hotheaded and
 divorces its functional unit before the latter completes.  How might
 this violate the flow dependence?
 
