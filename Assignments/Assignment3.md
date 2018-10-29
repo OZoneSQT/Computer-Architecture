@@ -180,21 +180,17 @@ FP value is written Mem[r5].  Indicate opcodes.  Show station contents for
 
 ###### Answers:
 ```
-How do we draw reservation stations in ASCII ????
-
-rs1:   ld  << It says not to show ld
-rs2:   ld  << It says not to show ld
-rs3:   mul
-rs4:   mul
-rs5:   add
-rs7:   s   Val: Mem:
-rs8:   sub
-rs9:   sub Ear: Mem[r2] Val: 8 Out Mem[r2]
-rs10:  br  Ear: Mem[r1] Val: loop
-rs11:  ld  << It says not to show ld
-rs12:  ld  << It says not to show ld'
-
-I really dont understand what you are asking for on this question...
+rs1:   mul
+rs2:   mul
+rs3:   add
+rs4:   s   Val: Mem:
+rs6:   sub
+rs7:   sub Ear: Mem[r2]; Val: 8; Out: Mem[r2]
+rs8:   br  Ear: Mem[r1]; Val: loop
+rs9:   mul Ear: f4; Val: f0; Out: f4
+rs10:  mul Ear: f6; Val: f2; Out: f6
+rs11:  add Ear: f4; Ear: f6; Out: f4
+rs12:  s   Val: f4; Mem[r1]
 ```
 
 b) [12 marks] After both loads of the second iteration complete, but no
