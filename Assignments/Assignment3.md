@@ -158,6 +158,18 @@ Imagine that reservation stations only track whether floating-point operands
 are valid, and that integer operands appear by magic whenever needed, with
 one exception, noted below.
 
+```
+loop: l.d   f4,0(r1)   l1  
+      l.d   f6,0(r2)   l2  
+      mul.d f4,f4,f0   m1  
+      mul.d f6,f6,f2   m2  
+      add.d f4,f4,f6   a1  
+      s.d   f4,0(r1)   s1  
+      subi  r1,r1,8    sub1
+      subi  r2,r2,8    sub2
+      bnez  r1,loop    br
+```
+
 a) [12 marks] Unroll the loop twice.  Dispatch the first 12 FP instructions
 to the pipeline's 12 reservation stations, viz., [1] to [12].  We cheat on
 the load RSs, so do not show those stations.  FP arithmetic is normal.  But
