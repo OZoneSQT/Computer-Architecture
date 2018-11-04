@@ -1,5 +1,5 @@
 # Lecture One Summary
-- Memory Wall is the _greatest challenge_ got mordern day computer architecture. Applies to latency in general.
+- Memory Wall is the _greatest challenge_ for mordern day computer architecture. Applies to latency in general.
 - How to calculate the runtime of a program
 ```
 Seconds     instruction     cycles          seconds
@@ -44,3 +44,12 @@ Effective Speedup = # of boxes !
 
 __Limitation__: 1 box and only perform one operation. box will wait on an instruction data to be available before continuing. These are called _Stalls_.
 
+### Hazards
+1. Structural Hazard
+   - Hardware unavailable: `float` multiple has to wait while that ALU is in use
+2. Data Hazard
+   - Instruction requests unavailable data: Output of previous instruction has yet to be produced. Data/Flow dependency
+3. Control Hazard
+   - Branch decision unavailable
+
+Hazards produce stalls with affect the Speed-Up seen by a program when pipelining. `S = pipeDepth / 1 - ( stallCounter / instructionCounter )`. 
