@@ -58,9 +58,9 @@ Hazards produce stalls with affect the Speed-Up seen by a program when pipelinin
 - Flow
    - Structural, Data, Controll Hazards
 - Output
-   - ???
+   - Overwrites and existing result required by a third party
 - Anti
-   - Flipping order of instructions would cause program inconsistences.
+   - Flipping order of instructions would cause program inconsistences
 
 ![image](https://user-images.githubusercontent.com/16867443/47973914-e190ee00-e074-11e8-8bc7-9ab8e6c8556e.png)
 
