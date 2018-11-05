@@ -1,4 +1,4 @@
-# Lecture One Summary
+# Appendix C Summary
 - Memory Wall is the _greatest challenge_ for mordern day computer architecture. Applies to latency in general.
 - How to calculate the runtime of a program
 ```
