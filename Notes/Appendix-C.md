@@ -61,7 +61,9 @@ Hazards produce stalls with affect the Speed-Up seen by a program when pipelinin
    - ???
 - Anti
    - Flipping order of instructions would cause program inconsistences.
-   
+
+![image](https://user-images.githubusercontent.com/16867443/47973914-e190ee00-e074-11e8-8bc7-9ab8e6c8556e.png)
+
 ### Multi-Cycle Instructions
 Instruction can take a variable amount of time at each box. Class convention:
 - mul.d takes four X cycles
@@ -70,4 +72,3 @@ Instruction can take a variable amount of time at each box. Class convention:
 Loop cycle = completeion of D-box for bne instruction.
 
 loop cycle * number of iteration - 1 + the maximum duration of the loop. 
-
