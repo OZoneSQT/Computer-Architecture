@@ -52,4 +52,22 @@ __Limitation__: 1 box and only perform one operation. box will wait on an instru
 3. Control Hazard
    - Branch decision unavailable
 
-Hazards produce stalls with affect the Speed-Up seen by a program when pipelining. `S = pipeDepth / 1 - ( stallCounter / instructionCounter )`. 
+Hazards produce stalls with affect the Speed-Up seen by a program when pipelining. `S = pipeDepth / 1 - ( stallCounter / instructionCounter )`.
+
+### Dependencies
+- Flow
+   - Structural, Data, Controll Hazards
+- Output
+   - ???
+- Anti
+   - Flipping order of instructions would cause program inconsistences.
+   
+### Multi-Cycle Instructions
+Instruction can take a variable amount of time at each box. Class convention:
+- mul.d takes four X cycles
+
+### Loop Timing
+Loop cycle = completeion of D-box for bne instruction.
+
+loop cycle * number of iteration - 1 + the maximum duration of the loop. 
+
