@@ -1,0 +1,74 @@
+COMP 326/5261                   Assignment 4                       Fall 2018
+ 
+Issued: November 12, 2018                             Due: November 26, 2018
+                                                     Typed hardcopy in class
+1. Vector Performance (40 marks)
+
+Consider the following code fragment:
+
+lv      v1,rx         // load vector x
+lv      v2,ry         // load vector y
+mulvs.d v3,v1,f0      // z1 = a * x
+addvv.d v4,v2,v3      // z2 = y + z1
+mulvs.d v5,v2,f2      // z3 = b * y
+sv      v4,ry         // store z2 as vector y
+sv      v5,rx         // store z3 as vector x
+
+Make the following assumptions:
+
+- this is a four-lane vector processor---this affects the running time of
+  vector instructions, according to our formula
+- there are two copies of each arithmetic vector functional unit and two
+  copies of the vector load-store functional unit---this affects the number
+  of vector instructions that can run in parallel in a gang
+- a vector store completes as soon as the last element is sent to memory
+- start-up penalties of functional units are: l/s = 12, add = 6, mul = 7
+- the vector length is 256
+
+a) In the absence of vector chaining, determine the execution time of this
+code fragment by drawing the timing diagram.  Indicate starting time, first
+result, and last result for each gang.  Hint: draw the flow-dependence graph
+first.  <This is the bad way we mocked in class; the better way works
+directly with start-up penalties and 'n'.>
+
+b) In the presence of vector chaining, determine the execution time of this
+code fragment by drawing the timing diagram.  Indicate starting time, first
+result, and last result for each gang.  <Actually, for each gang, indicate
+the aggregate startup time, add the vector time, and sum the gangs to get
+the total time.>
+
+2. Vectorizing Compiler (30 marks)
+
+Consider this familiar loop:
+
+loop: l.d    f4,0(r1)    l1  
+      l.d    f6,0(r2)    l2  
+      mul.d  f4,f4,f0    m1  
+      mul.d  f6,f6,f2    m2  
+      add.d  f4,f4,f6    a1  
+      s.d    f4,0(r1)    s1  
+      daddui r1,r1,#-8   sub1
+      daddui r2,r2,#-8   sub2
+      bnez   r1,loop     br  
+
+Rewrite the code using vector instructions.  Draw the flow-dependence graph
+of vector instructions.  Using vector chaining, make a rough estimate of
+the running time of the program, using the data in question 1.
+
+3. Vectorizing Loop Nests (30 marks)
+
+Consider the following loop nest that computes the lengths of many
+strings.
+
+for( i=0; i<n; i++ ) {
+  char *p = str[i];
+  while( *p )
+    p++;
+  len[i] = p - str[i];
+}
+
+Comment, with a reasonable explanation, on the relative abilities of
+parallelizing and vectorizing compilers to compile this loop nest.
+A parallelizing compiler breaks a loop nest into multiple threads.
+A vectorizing compiler expresses a loop-nest computation using vector
+instructions.
