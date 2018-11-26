@@ -105,6 +105,38 @@ Rewrite the code using vector instructions.  Draw the flow-dependence graph
 of vector instructions.  Using vector chaining, make a rough estimate of
 the running time of the program, using the data in question 1.
 
+```
+loop: lv       v4,0(r1)    l1  
+      lv       v6,0(r2)    l2  
+      mulvv.d  v4,v4,v0    m1  
+      mulvv.d  v6,v6,v2    m2  
+      addvv.d  v4,v4,v6    a1  
+      sv       v4,0(r1)    s1  
+      // no need to move pointers and loop when vector we process all elemts at one 
+
+
+Dependency Flows:
+F1: l1, m1
+F2: l2, m2
+F3: _F1_, _F2_, a1, s1
+
+G1: [ l1, l2, m1, m2 ] // No free FUs
+
+0            12           24       31       38                            76                             102
+|-----l1-----|----------------------------n-------------------------------|
+             |-----l2-----|----------------------------n-------------------------------|
+                          |---m2---|----------------------------n-------------------------------|
+                                   |---m2---|----------------------------n-------------------------------|
+                                   
+G2: [ s1, a1 ] // 1 free l/s FUs, 1 math FU used
+
+102      108          120                                             172          184
+|---a1---|----------------------------n-------------------------------|
+         |-----s1-----|----------------------------n-------------------------------|
+
+Total Execution Time: 184
+```
+
 3. Vectorizing Loop Nests (30 marks)
 
 Consider the following loop nest that computes the lengths of many
