@@ -42,7 +42,12 @@ first.  <This is the bad way we mocked in class; the better way works
 directly with start-up penalties and 'n'.>
 
 ```
+G1: MAX [ l1, l2 ] = 12 + 64, 12 + 64 = 76
+G2: MAX [ m1, m2 ] = 7 + 64, 7 + 64   = 71
+G3: MAX [ s1, a1 ] = 12 + 64, 6 + 64  = 76
+G4:     [ s2 ]     = 12 + 64          = 76
 
+T = 76 + 71 + 76 + 76 = 299
 ```
 
 b) In the presence of vector chaining, determine the execution time of this
@@ -50,6 +55,37 @@ code fragment by drawing the timing diagram.  Indicate starting time, first
 result, and last result for each gang.  <Actually, for each gang, indicate
 the aggregate startup time, add the vector time, and sum the gangs to get
 the total time.>
+
+```
+G1: [ l1, l2, m1, m2 ] // No free FUs
+
+0            12           24       31       38                            76                             102
+|-----l1-----|----------------------------n-------------------------------|
+             |-----l2-----|----------------------------n-------------------------------|
+                          |---m2---|----------------------------n-------------------------------|
+                                   |---m2---|----------------------------n-------------------------------|
+                                   
+G2: [ s1, a1, s2 ] // No free l/s FUs, 1 math FU used
+
+102          124      130          148                                    188                   212
+|-----s1-----|----------------------------n-------------------------------|
+             |---a1---|----------------------------n-------------------------------|
+                      |-----s2-----|----------------------------n-------------------------------|
+
+G1:
+Execution Time: 102
+Start Time:     0 
+First Result:   38
+Last Result:    102
+                      
+G2:
+Execution Time: 110
+Start Time:     102 
+First Result:   148
+Last Result:    212
+
+Total Execution Time: 212
+```
 
 2. Vectorizing Compiler (30 marks)
 
