@@ -25,11 +25,25 @@ Make the following assumptions:
 - start-up penalties of functional units are: l/s = 12, add = 6, mul = 7
 - the vector length is 256
 
+```
+Dependecy Flows
+F1: l1 ,m2, s1
+F2: l2, m1, a1, s2
+
+n = Vec Reg Len / # of Lanes = 256 / 4 = 64
+
+Gangs: [ l1, l2 ], [ m1, m2 ], [ s1, a1 ], [ s2 ]
+```
+
 a) In the absence of vector chaining, determine the execution time of this
 code fragment by drawing the timing diagram.  Indicate starting time, first
 result, and last result for each gang.  Hint: draw the flow-dependence graph
 first.  <This is the bad way we mocked in class; the better way works
 directly with start-up penalties and 'n'.>
+
+```
+
+```
 
 b) In the presence of vector chaining, determine the execution time of this
 code fragment by drawing the timing diagram.  Indicate starting time, first
@@ -73,9 +87,11 @@ A parallelizing compiler breaks a loop nest into multiple threads.
 A vectorizing compiler expresses a loop-nest computation using vector
 instructions.
 
+```
 this program snippet calculates 
 1. the number of character that comes after each character... this strlen(str) - index
 2. the length of an array of character arrays ( https://godbolt.org/z/0ev13R ) <-- quickie
  ... this would be 
 easily parallelized/optimized by plain compilers. vectorized would 
 also work because each index of the string is computed with no dependency
+```
