@@ -72,3 +72,8 @@ parallelizing and vectorizing compilers to compile this loop nest.
 A parallelizing compiler breaks a loop nest into multiple threads.
 A vectorizing compiler expresses a loop-nest computation using vector
 instructions.
+
+this program snippet calculates the number of character that comes 
+after each character... this strlen(str) - index ... this would be 
+easily parallelized/optimized by plain compilers. vectorized would 
+also work because each index of the string is computed with no dependency
