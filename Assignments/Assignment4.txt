@@ -73,7 +73,9 @@ A parallelizing compiler breaks a loop nest into multiple threads.
 A vectorizing compiler expresses a loop-nest computation using vector
 instructions.
 
-this program snippet calculates the number of character that comes 
-after each character... this strlen(str) - index ... this would be 
+this program snippet calculates 
+1. the number of character that comes after each character... this strlen(str) - index
+2. the length of an array of character arrays ( https://godbolt.org/z/0ev13R ) <-- quickie
+ ... this would be 
 easily parallelized/optimized by plain compilers. vectorized would 
 also work because each index of the string is computed with no dependency
