@@ -76,3 +76,48 @@ Two methodologies
 - realalistic: dont exceed functional units
 
 > still must respect program order
+
+Example
+```
+L1 --> M2 -----> A4
+          L3 --> A4 --> S5
+```
+
+- Option A: Simplified
+```
+ [ L1 ]   [ M2, L3 ]    [ A4 ]   [ S5 ]
+12 + N | max(7,12) + N | 6 + N | 12 + N == 42 + 4N
+```
+
+- Option B: Realistic
+> assuming two load units, start loads at teh same time for best result !
+```
+[ L1, M2, L3, A4, S5 ]
+12 + 7 + N/A + 6 + 12 + N == 37 + N
+```
+
+```
+N = vec reg len / # of lanes
+```
+
+##### Vector Chaining
+- Sequential
+```
+|-------|---------------------|------|---------------------|
+    7            n                6              n           == 13 + 2N 
+```
+
+- Chaining
+```
+|-------|---------------------|           // Start as soon as first retval is avaiable !
+    7   |------|---------------------|
+           6              n            == 13 + N
+```
+
+##### Memory Access Patterns
+Specialized by Harware
+- Unit stride: each index of an array
+- constant stride: every i-th element
+- scatter gather: random list
+
+> GPU's have tiny memory which means the data must be preloaded || hardcoded in advance !
